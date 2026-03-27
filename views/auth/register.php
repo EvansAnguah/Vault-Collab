@@ -34,24 +34,27 @@
         </div>
     </div>
 
-    <!-- Email -->
+    <!-- Email (forced @st.rmu.edu.gh) -->
     <div class="form-group">
-        <label class="form-label" for="email">Email Address <span class="required">*</span></label>
-        <div class="input-group">
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                class="form-control" 
-                placeholder="your.name@st.rmu.edu.gh"
-                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                required
-            >
-            <span class="input-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </span>
+        <label class="form-label" for="email_username">Email Address <span class="required">*</span></label>
+        <div class="email-forced-group">
+            <div class="input-group" style="flex:1;">
+                <input 
+                    type="text" 
+                    id="email_username" 
+                    class="form-control" 
+                    placeholder="e.g. kwame.mensah"
+                    value="<?= htmlspecialchars(str_replace('@st.rmu.edu.gh', '', $_POST['email'] ?? '')) ?>"
+                    required
+                    autocomplete="username"
+                >
+                <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+            </div>
+            <span class="email-domain">@st.rmu.edu.gh</span>
         </div>
-        <div class="form-text">Must be your official @st.rmu.edu.gh email</div>
+        <input type="hidden" id="email" name="email" value="">
     </div>
 
     <!-- Index Number -->

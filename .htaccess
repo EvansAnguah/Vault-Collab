@@ -1,8 +1,9 @@
 RewriteEngine On
+RewriteBase /Vault&Collab/
 
 # Redirect Trailing Slashes
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]
+RewriteRule ^(.*)/$ $1 [L,R=301]
 
 # Deny access to sensitive directories
 RewriteRule ^(config|core|models|controllers|views|database|storage)/ - [F,L]
@@ -10,11 +11,7 @@ RewriteRule ^vendor/ - [F,L]
 RewriteRule ^\.env$ - [F,L]
 
 # Allow direct access to public assets
-RewriteCond %{REQUEST_URI} ^/public/
-RewriteRule ^ - [L]
-
-# Allow direct access to API endpoints
-RewriteCond %{REQUEST_URI} ^/api/
+RewriteCond %{REQUEST_URI} /public/
 RewriteRule ^ - [L]
 
 # Route everything else through index.php

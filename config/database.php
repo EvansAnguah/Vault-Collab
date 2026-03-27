@@ -6,7 +6,7 @@
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'vault_collab');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'Qwerty77');
 define('DB_CHARSET', 'utf8mb4');
 
 class Database {

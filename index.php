@@ -41,5 +41,5 @@ App\Core\Session::init();
 // Load routes and dispatch
 require_once BASE_PATH . '/config/routes.php';
 
-$router = new App\Core\Router();
+$router = App\Core\Router::getInstance();
 $router->dispatch();

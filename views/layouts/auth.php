@@ -22,6 +22,9 @@
 </head>
 <body class="auth-page">
     
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+    
     <?php
     // Flash Messages
     $flashSuccess = \App\Core\Session::getFlash('success');
@@ -164,6 +167,7 @@
     <!-- Scripts -->
     <script src="<?= APP_URL ?>/public/js/app.js"></script>
     <script src="<?= APP_URL ?>/public/js/auth.js"></script>
+    <script src="<?= APP_URL ?>/public/js/particles.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>

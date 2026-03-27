@@ -1,0 +1,33 @@
+# Dependencies
+/vendor/
+composer.lock
+
+# Environment / Config (sensitive data)
+.env
+
+# Uploads
+/public/uploads/profiles/*
+/public/uploads/chat/*
+/public/uploads/documents/*
+!/public/uploads/profiles/.gitkeep
+!/public/uploads/chat/.gitkeep
+!/public/uploads/documents/.gitkeep
+
+# Storage
+/storage/repos/*
+!/storage/repos/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

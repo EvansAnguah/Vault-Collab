@@ -1,0 +1,13 @@
+{
+    "name": "rmu/vault-collab",
+    "description": "Project Vault & Collaboration Hub - Regional Maritime University",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "."
+        }
+    }
+}

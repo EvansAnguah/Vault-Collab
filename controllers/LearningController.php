@@ -25,7 +25,7 @@ class LearningController extends Controller {
 
         if ($deptId) {
             $deptModel = new \Department();
-            $deptInfo = $deptModel->findById($deptId);
+            $deptInfo = $deptModel->find($deptId);
             if ($deptInfo) {
                 $deptName = $deptInfo['name'];
             }

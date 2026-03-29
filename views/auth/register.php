@@ -63,7 +63,7 @@
                 id="index_number" 
                 name="index_number" 
                 class="form-control" 
-                placeholder="e.g. RMU/BSC/22/0001"
+                placeholder="e.g. BCS0000223"
                 value="<?= htmlspecialchars($_POST['index_number'] ?? '') ?>"
                 required
             >

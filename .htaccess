@@ -1,5 +1,4 @@
 RewriteEngine On
-RewriteBase /Vault&Collab/
 
 # Redirect Trailing Slashes
 RewriteCond %{REQUEST_FILENAME} !-d

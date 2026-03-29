@@ -7,8 +7,12 @@
 define('APP_NAME', 'Project Vault & Collaboration Hub');
 define('APP_SHORT_NAME', 'ProjectVault');
 define('APP_VERSION', '1.0.0');
-define('APP_URL', 'http://localhost/Vault&Collab'); // Change to production URL when deploying
-
+// Dynamically detect base URL structure (works locally and globally)
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$scriptPath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$basePath = ($scriptPath === '/') ? '' : $scriptPath;
+define('APP_URL', $protocol . '://' . $host . $basePath);
 // University
 define('UNIVERSITY_NAME', 'Regional Maritime University');
 define('UNIVERSITY_SHORT', 'RMU');
@@ -34,8 +38,8 @@ define('REMEMBER_ME_LIFETIME', 2592000); // 30 days
 // SMTP Configuration (PHPMailer)
 define('SMTP_HOST', 'smtp.gmail.com'); // Change to your SMTP provider
 define('SMTP_PORT', 587);
-define('SMTP_USERNAME', 'your-email@gmail.com'); // Change to your email
-define('SMTP_PASSWORD', 'your-app-password'); // Change to your app password
+define('SMTP_USERNAME', 'evansanguah@gmail.com'); // Change to your email
+define('SMTP_PASSWORD', 'ziccseuizbwkgjpz'); // Change to your app password
 define('SMTP_ENCRYPTION', 'tls');
 define('SMTP_FROM_EMAIL', 'noreply@rmu.edu.gh');
 define('SMTP_FROM_NAME', APP_NAME);

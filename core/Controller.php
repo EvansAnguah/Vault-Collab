@@ -16,6 +16,11 @@ class Controller {
      * Render a view with data
      */
     protected function view($viewPath, $data = [], $layout = null) {
+        // Automatically inject authenticated user data into all views
+        if (!isset($data['user'])) {
+            $data['user'] = Auth::user();
+        }
+
         // Extract data to make variables available in the view
         extract($data);
 

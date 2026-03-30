@@ -1,8 +1,5 @@
 <?php
 use App\Core\Auth;
-use function App\Core\get_initials;
-use function App\Core\avatar_color;
-use function App\Core\e;
 
 $userName = ($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '');
 $initials = strtoupper(substr($user['first_name'] ?? 'U', 0, 1) . substr($user['last_name'] ?? '', 0, 1));

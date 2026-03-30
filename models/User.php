@@ -145,10 +145,62 @@ class User extends \App\Core\Model {
      */
     public function getRecent($limit = 10) {
         $stmt = $this->db->prepare(
-            "SELECT * FROM users ORDER BY created_at DESC LIMIT :limit"
+            "SELECT u.*, d.name as department_name FROM users u 
+             LEFT JOIN departments d ON u.department_id = d.id 
+             ORDER BY u.created_at DESC LIMIT :limit"
         );
         $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    /**
+     * Get all users with department names and filtering
+     */
+    public function getAllWithDetails($filters = []) {
+        $sql = "SELECT u.*, d.name as department_name FROM users u 
+                LEFT JOIN departments d ON u.department_id = d.id WHERE 1=1";
+        $params = [];
+
+        if (!empty($filters['role'])) {
+            $sql .= " AND u.role = :role";
+            $params['role'] = $filters['role'];
+        }
+
+        if (!empty($filters['department_id'])) {
+            $sql .= " AND u.department_id = :dept_id";
+            $params['dept_id'] = $filters['department_id'];
+        }
+
+        if (!empty($filters['search'])) {
+            $sql .= " AND (u.first_name LIKE :s OR u.last_name LIKE :s2 OR u.email LIKE :s3 OR u.index_number LIKE :s4)";
+            $params['s'] = $params['s2'] = $params['s3'] = $params['s4'] = "%" . $filters['search'] . "%";
+        }
+
+        $sql .= " ORDER BY u.created_at DESC";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Update user status (active/inactive)
+     */
+    public function updateStatus($userId, $status) {
+        return $this->update($userId, ['is_active' => $status ? 1 : 0]);
+    }
+
+    /**
+     * Find user by ID with department details
+     */
+    public function findByIdWithDetails($userId) {
+        $stmt = $this->db->prepare(
+            "SELECT u.*, d.name as department_name FROM users u 
+             LEFT JOIN departments d ON u.department_id = d.id 
+             WHERE u.id = :id LIMIT 1"
+        );
+        $stmt->execute(['id' => $userId]);
+        return $stmt->fetch();
     }
 }

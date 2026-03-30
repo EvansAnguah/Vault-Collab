@@ -27,10 +27,10 @@ require_once BASE_PATH . '/config/database.php';
 
 // Load core classes
 require_once BASE_PATH . '/core/helpers.php';
-require_once BASE_PATH . '/core/Session.php';
 require_once BASE_PATH . '/core/Router.php';
-require_once BASE_PATH . '/core/Controller.php';
+require_once BASE_PATH . '/core/Session.php';
 require_once BASE_PATH . '/core/Model.php';
+require_once BASE_PATH . '/core/Controller.php';
 require_once BASE_PATH . '/core/Auth.php';
 require_once BASE_PATH . '/core/Middleware.php';
 require_once BASE_PATH . '/core/Mailer.php';

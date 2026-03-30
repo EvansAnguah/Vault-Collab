@@ -51,6 +51,7 @@ $router->add('POST', '/admin/upload-students', 'AdminController@uploadStudents',
 $router->add('GET', '/admin/departments', 'AdminController@departments', ['admin']);
 $router->add('POST', '/admin/departments', 'AdminController@createDepartment', ['admin']);
 $router->add('POST', '/admin/programs', 'AdminController@createProgram', ['admin']);
+$router->add('POST', '/admin/toggle-user-status', 'AdminController@toggleUserStatus', ['admin']);
 $router->add('GET', '/admin/settings', 'AdminController@settings', ['admin']);
 
 // ============================================================

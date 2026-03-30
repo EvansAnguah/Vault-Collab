@@ -129,7 +129,7 @@ input:checked + .slider:before {
         </div>
 
         <form action="<?= APP_URL ?>/settings/update" method="POST">
-            <?= csrf_field() ?>
+            <?= \App\Core\Session::csrfField() ?>
 
             <!-- Notifications -->
             <div class="settings-group">

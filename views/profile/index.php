@@ -167,7 +167,7 @@
     <!-- LEFT SIDE: Photo & Bio -->
     <div class="profile-card">
         <form action="<?= APP_URL ?>/profile/upload-photo" method="POST" enctype="multipart/form-data" id="photo-form">
-            <?= csrf_field() ?>
+            <?= \App\Core\Session::csrfField() ?>
             <div class="profile-avatar-wrapper">
                 <?php if ($user['profile_photo']): ?>
                     <img src="<?= APP_URL ?>/<?= htmlspecialchars($user['profile_photo']) ?>" alt="Profile Photo" class="profile-avatar">
@@ -223,7 +223,7 @@
             </div>
 
             <form action="<?= APP_URL ?>/profile/update" method="POST">
-                <?= csrf_field() ?>
+                <?= \App\Core\Session::csrfField() ?>
                 
                 <div class="form-row">
                     <div class="form-group">
@@ -265,7 +265,7 @@
             <h3 style="margin-bottom: 1.5rem; color: var(--navy-800);">Change Password</h3>
             
             <form action="<?= APP_URL ?>/profile/change-password" method="POST">
-                <?= csrf_field() ?>
+                <?= \App\Core\Session::csrfField() ?>
                 
                 <div class="form-group" style="max-width: 400px;">
                     <label>Current Password</label>

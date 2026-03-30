@@ -359,3 +359,31 @@
     color: var(--navy-300);
     margin-bottom: var(--space-2);
 }
+
+/* ============================================================
+   Responsive (Mobile) Settings
+   ============================================================ */
+@media (max-width: 900px) {
+    .auth-page {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    .auth-branding {
+        padding: var(--space-8) var(--space-4);
+        flex: none;
+    }
+    .auth-form-panel {
+        width: 100%;
+        min-width: 100%;
+        padding: var(--space-8) var(--space-4);
+        border-left: none;
+        border-top: 1px solid var(--glass-border);
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .feature-pills {
+        display: none; /* Hide extraneous marketing on restricted mobile widths */
+    }
+}

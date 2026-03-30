@@ -143,6 +143,15 @@
     background: var(--ocean-blue);
     color: white;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
 </style>
 
 <div class="section-header">

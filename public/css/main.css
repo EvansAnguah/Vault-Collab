@@ -1127,3 +1127,19 @@ tbody tr:last-child td {
     justify-content: center;
     border: 2px solid var(--navy-800);
 }
+
+/* ============================================================
+   Global Mobile Hacks & Utilities
+   ============================================================ */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

@@ -104,6 +104,42 @@
 #save-status.show {
     opacity: 1;
 }
+
+/* Mobile Responsiveness for Editors */
+@media (max-width: 900px) {
+    .playground-wrapper {
+        height: auto;
+        min-height: 100vh;
+        margin: -1rem;
+    }
+    .pg-editors {
+        flex-direction: column;
+        height: auto;
+    }
+    .editor-column {
+        border-right: none;
+        border-bottom: 2px solid #334155;
+    }
+    .CodeMirror {
+        height: 250px !important;
+    }
+    .pg-preview {
+        height: 50vh;
+        min-height: 400px;
+    }
+    .pg-header {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .pg-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .pg-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
 </style>
 
 <div class="playground-wrapper">

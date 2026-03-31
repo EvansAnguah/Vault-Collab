@@ -44,10 +44,9 @@ class HodController extends Controller {
     public function repoRequests() {
         $user = Auth::user();
         $requestModel = new \RepoRequest();
-        
         $requests = $requestModel->getPendingByDepartment($user['department_id']);
 
-        // Get supervisors for assignment dropdown
+        // Get supervisors for immediate assignment
         $userModel = new \User();
         $supervisors = $userModel->getSupervisorsByDepartment($user['department_id']);
 
@@ -86,6 +85,11 @@ class HodController extends Controller {
 
         if ($requestModel->update($requestId, $data)) {
             if ($action === 'approved') {
+                if (empty($supervisorId)) {
+                    $this->redirectWithMessage('/hod/repo-requests', 'error', 'Supervisor is required for approval.');
+                    return;
+                }
+
                 // If approved, create the repository
                 $repoModel = new \Repository();
                 $repoModel->create([
@@ -101,7 +105,7 @@ class HodController extends Controller {
                 $this->db->prepare("UPDATE `groups` SET status = 'active' WHERE id = ?")
                          ->execute([$request['group_id']]);
                 
-                $this->redirectWithMessage('/hod/repo-requests', 'success', 'Request approved. Tracking repository created.');
+                $this->redirectWithMessage('/hod/repo-requests', 'success', 'Request approved. Repository created and supervisor assigned.');
             } else {
                 $this->redirectWithMessage('/hod/repo-requests', 'info', 'Request declined with comments.');
             }

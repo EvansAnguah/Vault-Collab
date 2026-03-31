@@ -26,6 +26,9 @@ class RepositoryController extends Controller {
             return;
         }
 
+        $fileModel = new \RepoFile();
+        $fileTree = $fileModel->getTree($id);
+
         // Access Check: Is user in the group or assigned supervisor?
         $userId = Auth::id();
         $groupModel = new \Group();
@@ -33,19 +36,19 @@ class RepositoryController extends Controller {
         $isInGroup = false;
         foreach ($members as $m) if ($m['id'] == $userId) $isInGroup = true;
 
-        if (!$isInGroup && $repo['supervisor_id'] != $userId && Auth::role() != 'admin' && Auth::role() != 'hod') {
+        $isSupervisor = $repo['supervisor_id'] == $userId;
+        $isStaff = Auth::role() == 'admin' || Auth::role() == 'hod';
+
+        if (!$isInGroup && !$isSupervisor && !$isStaff) {
             $this->redirectWithMessage('/dashboard', 'error', 'You do not have access to this workspace.');
             return;
         }
 
-        // Project must have a supervisor for students to enter
-        if ($isInGroup && !$repo['supervisor_id'] && Auth::role() == 'student') {
-            $this->redirectWithMessage('/dashboard', 'warning', 'Workspace is pending supervisor assignment by the HOD. Please wait.');
+        // Student Access Rule: Must have a supervisor assigned
+        if ($isInGroup && empty($repo['supervisor_id'])) {
+            $this->redirectWithMessage('/dashboard', 'error', 'Workspace is pending supervisor assignment. Please contact your HOD.');
             return;
         }
-
-        $fileModel = new \RepoFile();
-        $fileTree = $fileModel->getTree($id);
 
         $this->view('repository/workspace', [
             'pageTitle' => 'Workspace: ' . $repo['title'],

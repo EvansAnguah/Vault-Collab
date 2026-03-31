@@ -1,43 +1,40 @@
-<div class="page-header animate-fade">
-    <h1 class="page-title"><i class="fa-solid fa-plus-circle mr-3 text-blue-600"></i> Form Research Group</h1>
-    <div class="flex gap-2">
-        <a href="<?= APP_URL ?>/student/group" class="btn btn-sm">
-            <i class="fa-solid fa-arrow-left mr-2"></i> Cancel
-        </a>
+<div class="dashboard-header animate__animated animate__fadeIn">
+    <div>
+        <h1><i class="fa-solid fa-plus-circle text-ocean-500"></i> Form a Project Group</h1>
+        <p>Start a new research team to begin your final-year project journey.</p>
+    </div>
+    <div class="header-actions">
+        <a href="<?= APP_URL ?>/student/group" class="btn btn-ghost btn-sm"><i class="fa-solid fa-arrow-left"></i> Back to My Group</a>
     </div>
 </div>
 
-<div class="max-w-md mx-auto animate-fade">
-    <div class="card">
-        <div class="card-header bg-gray-50/50">
-            <h3 class="card-title text-sm uppercase text-gray-400 tracking-widest font-bold">New Identity</h3>
-        </div>
-        <div class="card-body p-8">
-            <form method="POST" action="<?= APP_URL ?>/student/create-group">
-                <?= \App\Core\Session::csrfField() ?>
-                
-                <div class="form-group mb-8">
-                    <label class="form-label font-bold text-xs uppercase tracking-widest">Project Group Nomenclature <span class="text-red-500">*</span></label>
-                    <input type="text" name="name" class="form-control p-3 border-2 focus:border-blue-600 focus:shadow-none" required placeholder="Ex: Maritime Logistics IoT Hub">
-                    <p class="text-[10px] text-gray-400 mt-2 italic">You can refine this name during the research phase.</p>
+<div class="card max-w-2xl mx-auto animate__animated animate__fadeInUp">
+    <div class="card-body">
+        <form method="POST" action="<?= APP_URL ?>/student/create-group">
+            <?= \App\Core\Session::csrfField() ?>
+            
+            <div class="form-group mb-6">
+                <label class="form-label font-bold text-slate-100">Project Group Name <span class="text-rose-500">*</span></label>
+                <div class="input-group">
+                    <i class="fa-solid fa-tag input-icon"></i>
+                    <input type="text" name="name" class="form-control" required placeholder="Ex: Smart Campus IoT Team">
                 </div>
+                <p class="text-[10px] text-slate-500 mt-2">You can change this name later in your group settings.</p>
+            </div>
 
-                <div class="bg-blue-50 border border-blue-100 p-4 rounded-lg mb-8 flex items-start gap-4">
-                    <i class="fa-solid fa-crown text-amber-500 text-lg"></i>
+            <div class="bg-ocean-500/5 p-4 rounded-xl border border-ocean-500/10 mb-8">
+                <div class="flex items-start gap-4">
+                    <i class="fa-solid fa-crown text-amber-400 mt-1"></i>
                     <div>
-                        <h4 class="text-xs font-bold text-blue-900 uppercase tracking-widest">Leadership Mandate</h4>
-                        <p class="text-[10px] text-blue-800 leading-relaxed mt-1">
-                            By initiating this group, you are assuming the role of **Principal Investigator (Leader)**. You will hold the exclusive authority to manage members and submit repository requests.
-                        </p>
+                        <h4 class="text-sm font-bold text-slate-100">Group Leadership</h4>
+                        <p class="text-xs text-slate-400 mt-1">By creating this group, you will be designated as the **Group Leader**. Only the leader can submit repository requests and add members.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="pt-4">
-                    <button type="submit" class="btn btn-blue w-full p-3 font-bold uppercase tracking-widest text-[11px]">
-                        <i class="fa-solid fa-check-circle mr-2"></i> Authorize Group Formation
-                    </button>
-                </div>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-primary w-full py-4 text-base shadow-lg shadow-ocean-500/20">
+                <i class="fa-solid fa-check-circle mr-2"></i> Confirm and Create Group
+            </button>
+        </form>
     </div>
 </div>
